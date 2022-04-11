@@ -1,13 +1,16 @@
 \let\negmedspace\undefined
 \let\negthickspace\undefined
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
 \usepackage{gensymb}
 \usepackage{amssymb}
 \usepackage[cmex10]{amsmath}
 \usepackage{amsthm}
-\usepackage{float}
 \usepackage[export]{adjustbox}
 \usepackage{bm}
+\usepackage{float}
+\usepackage{caption}
 \usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{mathtools}
@@ -67,57 +70,67 @@ https://github.com/TYCN129/AI1110-Assignments/tree/main/Assignment%202
 \section{\textbf{QUESTION - 18}}
 Draw a sketch and find the area bounded by the curve $x^2 = y$ and $x + y = 2$
 \section{\textbf{SOLUTION}}
-Let us find out the points of intersection of the two curves. We have the curves
+We have the curves
 \begin{align}
-    x^2 &= y\\
-    x + y &= 2
+    x + y &= 2\\
+    x^2 &= y
 \end{align}
-Substituting $y = x^2$ (from equation 1) in equation 2.
+We can observe that the point $(1,1)$ passes through the line. Let this point be called P. The line could be represented as,\\
 \begin{align}
-    x + x^2 &= 2\\
-    x^2 + x - 2 &= 0\\
-    (x + 2)(x - 1) &= 0\\
-    \fbox{x = -2, 1}
+    \vec{X} &= P + \lambda \vec{m}\\
+    \vec{X} &= \myvec{1 \\ 1} + \lambda \myvec{1 \\ m}
 \end{align}
-Substituting value of $x$ in equation 2, we get.
+where m is slope of the line and is equal to -1
 \begin{align}
-    \fbox{y = 4, 1}
+    \vec{X} &= \myvec{1 + \lambda \\ 1 + \lambda m}\\
+    \vec{X} &= \myvec{1 + \lambda \\ 1 - \lambda}
 \end{align}
-Let $(x_1,y_1)$ and $(x_2,y_2)$ be the two points of intersection.
+Also the equation for parabola in vector form is,
 \begin{align}
-    (x_1,y_1) &= (-2,4)\\
-    (x_2,y_2) &= (1,1)
+    \vec{X}^{\top}A\vec{X} + B^{\top}\vec{X} + C = 0
 \end{align}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\columnwidth]{Figures/Question.png}
-\end{figure}
-\begin{center}
-    Figure 1: Graph Plot
-\end{center}
-We need to find out the area of the shaded region shown below
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\columnwidth]{Figures/Sketch.png}
-\end{figure}
-\begin{center}
-    Figure 2: Region bound by the two curves
-\end{center}
-From the figure,
-\begin{center}
-Area between the curves(A)= Area of trapezium ABCD($A_1$) - Area under the curve $x^2 = y$($A_2$)
-\end{center}
+For the parabola $x^2 - y = 0$, $A = \myvec{1 & 0 \\ 0 & 0}$,\\ $B = \myvec{0 \\ -1}$ and $C$ is null matrix
+Thus,
+\begin{align}
+    \vec{X}^{\top} \myvec{1 & 0 \\ 0 & 0}\vec{X} + \myvec{0 & -1}\vec{X} = 0
+\end{align}
+Substituting equation (6) in equation (8), we get
+\begin{align}
+    \myvec{1 + \lambda & 1 - \lambda}\myvec{1 & 0 \\ 0 & 0}\myvec{1 + \lambda \\ 1 - \lambda} + \\ \myvec{0 & -1}\myvec{1 + \lambda \\ 1 - \lambda} = 0\\
+    (1 + \lambda)^2 - (1 - \lambda) = 0\\
+    \lambda^2 + 3\lambda = 0
+\end{align}
+Equation (12) is quadratic and of the form $ax^2 + bx + c = 0$, where $a = 1, b = 3$ and $c = 0$\\
+Using the quadratic formula
+\begin{align}
+    x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\\
+    \lambda &= \frac{-3 \pm \sqrt{3^2 - 4(1)(0))}}{2(1)}\\
+    \lambda &= \frac{-3 + 3}{2}, \frac{-3 - 3}{2}\\
+    \lambda &= 0, -3
+\end{align}
+On substituting the values of $\lambda$ in equation (6), we get the points of intersection,
+\begin{align}
+    \vec{X_1}^{\top} &= \myvec{1 \\ 1}\\
+    \vec{X_2}^{\top} &= \myvec{-2 \\ 4}
+\end{align}
+Thus, the two curves intersect at the points (-2 , 4) and (1 , 1)
 
 \clearpage
 
-\subsection{\textbf{Area of trapezium ABCD (A_1)}}
-\begin{figure}[H]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=\columnwidth]{Figures/trapezium.png}
+    \includegraphics[width=\columnwidth]{Question.png}
+    \caption*{Fig 1: Graph Plot}
+    \label{fig:graph}
 \end{figure}
-\begin{center}
-    Figure 3: Trapezium ABCD
-\end{center}
+
+\subsection{\textbf{Area of trapezium ABCD (A_1)}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{trapezium.png}
+    \caption*{Fig 3: Trapezium ABCD}
+    \label{fig:trap}
+\end{figure}
 \begin{align}
     A_1 &= \frac{1}{2}\times(AB + CD)\times AD\\
     A_1 &= \frac{1}{2}\times(4 + 1)\times 3
@@ -128,11 +141,10 @@ Area between the curves(A)= Area of trapezium ABCD($A_1$) - Area under the curve
 \subsection{\textbf{Area under the curve $x^2 = y$ (A_2)}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{Figures/x^2.png}
+    \includegraphics[width=\columnwidth]{x^2.png}
+    \caption*{Fig 4: Region below curve $x^2 = y$}
+    \label{fig:x^2}
 \end{figure}
-\begin{center}
-    Figure 4: Region below curve $x^2 = y$
-\end{center}
 \begin{align}
     A_2 &= \int_{-2}^{1} x^2 \, dx\\
     A_2 &= \frac{x^3}{3}\Biggr|_{-2}^{1}\\
@@ -141,7 +153,7 @@ Area between the curves(A)= Area of trapezium ABCD($A_1$) - Area under the curve
 \begin{center}
     \fbox{A_2 = 3 sq.units}
 \end{center}    
-Therefore,
+\subsection{\textbf{Area of the shaded region}}
 \begin{align}
     A &= A_1 - A_2\\
     A &= 7.5 - 3\\
@@ -151,7 +163,7 @@ Therefore,
 \end{center}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{Figures/Sketch.png}
+    \includegraphics[width=\columnwidth]{Sketch.png}
 \end{figure}
 \begin{center}
 \textbf{The area bound by the curves $x^2 = y$ and $x + y = 2$ is 4.5 sq.units}
