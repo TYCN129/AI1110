@@ -123,22 +123,12 @@ columns=fullflexible
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
-%\numberwithin{equation}{section}
-%\numberwithin{figure}{section}
-%\numberwithin{table}{section}
-%\numberwithin{equation}{subsection}
-%\numberwithin{problem}{section}
-%\numberwithin{definition}{section}
 \makeatletter
-\@addtoreset{figure}{problem}
+
 \makeatother
 \let\StandardTheFigure\thefigure
 \let\vec\mathbf
-%\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
-%\renewcommand{\thefigure}{\theproblem}
-%\setlist[enumerate,1]{before=\renewcommand\theequation{\theenumi.\arabic{equation}}
-%\counterwithin{equation}{enumi}
-%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+
 \def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
      \def\rightbox#1{\makebox[0in][r]{#1}}
      \def\centbox#1{\makebox[0in]{#1}}
@@ -153,7 +143,6 @@ columns=fullflexible
 \begin{abstract}
 This document contains the solution for Assignment 2 (ICSE Class 12 Maths 2019 Q.18)
 \end{abstract}
-\begin{flushleft}
 \textbf{Q18 [ICSE 12 2019]:}Draw a sketch and find the area bounded by the curve $x^2 = y$ and $x + y = 2$
 \textbf{Solution: } The given parabola $x^2 - y = 0$ can written in vector form as
 \begin{align}
@@ -207,9 +196,6 @@ Using these values of $\lambda$, the intersection points are,
     \myvec{-2 \\ 4} \text{and} \myvec{1 \\ 1}
 \end{align}
 
-\vfill\null 
-\columnbreak
-
 From the figure below, the required area is equal to,
 \begin{align}
     \text{Area of trapezium ABCD - Area under the parabola}
@@ -221,9 +207,8 @@ From the figure below, the required area is equal to,
 The blue shaded region in the figure below represents this area.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width = \columnwidth]{Figures/Figure.png}
+    \includegraphics[width = \columnwidth]{Figure.png}
     \caption{Plot of line and parabola}
     \label{Figure}
 \end{figure}
-\end{flushleft}
 \end{document}
