@@ -1,17 +1,10 @@
 import numpy as np
+import pandas as pd
 
-raw_data = np.array([
-    [95, 67, 28, 32, 65, 65, 69, 33, 98, 96],
-    [76, 42, 32, 38, 42, 40, 40, 69, 95, 92],
-    [75, 83, 76, 83, 85, 62, 37, 65, 63, 42],
-    [89, 65, 73, 81, 49, 52, 64, 76, 83, 92],
-    [93, 68, 52, 79, 81, 83, 59, 82, 75, 82],
-    [86, 90, 44, 62, 31, 36, 38, 42, 39, 83],
-    [87, 56, 58, 23, 35, 76, 83, 85, 30, 68],
-    [69, 83, 86, 43, 45, 39, 83, 75, 66, 83],
-    [92, 75, 89, 66, 91, 27, 88, 89, 93, 42],
-    [53, 69, 90, 55, 66, 49, 52, 83, 34, 36]
-])
+read = pd.read_excel(r'ExcelFiles/raw_data.xlsx')
+raw_data = np.array(read)
+
+class_intervals = ["20 - 29","30 - 39","40 - 49","50 - 59","60 - 69","70 - 79","80 - 89","90 - 99"]
 class_frequency = np.array([0,0,0,0,0,0,0,0])
 
 def class_index(f):
@@ -35,5 +28,8 @@ def class_index(f):
 for i in range(10):
     for j in range(10):
         class_frequency[class_index(raw_data[i][j])] += 1;
+
+write = pd.DataFrame({"Class intervals":class_intervals,"Frequency":class_frequency})
+write.to_excel('ExcelFiles/frequency_distribution.xlsx',index=False)
 
 print(class_frequency)
