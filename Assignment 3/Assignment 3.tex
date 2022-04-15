@@ -5,6 +5,7 @@
  \usepackage{gensymb}
 %\doublespacing
  \usepackage{polynom}
+ \usepackage{float}
 %\singlespacing
 %\usepackage{silence}
 %Disable all warnings issued by latex starting with "You have..."
@@ -163,7 +164,7 @@ This document contains the solution for Assignment 3 (CBSE Class 9 Chapter 14 (P
 76 & 42 & 32 & 38 & 42 & 40 & 40 & 69 & 95 & 92\\
 75 & 83 & 76 & 83 & 85 & 62 & 37 & 65 & 63 & 42\\
 89 & 65 & 73 & 81 & 49 & 52 & 64 & 76 & 83 & 92\\
-93 & 68 & 57 & 98 & 18 & 35 & 98 & 27 & 58 & 22\\
+93 & 68 & 52 & 79 & 81 & 83 & 59 & 82 & 75 & 82\\
 86 & 90 & 44 & 62 & 31 & 36 & 38 & 42 & 39 & 83\\
 87 & 56 & 88 & 23 & 35 & 76 & 83 & 85 & 30 & 68\\
 69 & 83 & 86 & 43 & 45 & 39 & 83 & 75 & 66 & 83\\
@@ -196,4 +197,17 @@ TABLE 1: Group frequency distribution table
 \end{center}
 Class width = 10\\
 Number of schools with more than 50\% plants survived = 8 + 18 + 10 + 23 + 12 = 71
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{ExcelFiles/raw_data.png}
+    \caption{Python code reads from the rawdata.xlsx}
+    \label{fig1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth - 4mm]{ExcelFiles/frequency_distribution.png}
+    \caption{Python code processes the data and creates frequency\_distribution.xlsx}
+    \label{fig2}
+\end{figure}
 \end{document}
