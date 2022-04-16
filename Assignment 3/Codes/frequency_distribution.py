@@ -11,5 +11,5 @@ class_intervals = ["{}-{}".format(bin[i],bin[i+1] - 1) for i in range(8)]
 hist = np.histogram(raw_data,bins=bin)
 print(hist[0])
 
-write = pd.DataFrame({"Class intervals":class_intervals,"Frequency":class_frequency})
+write = pd.DataFrame({"Class intervals":class_intervals,"Frequency":hist[0]})
 write.to_excel('ExcelFiles/frequency_distribution.xlsx',index=False)
