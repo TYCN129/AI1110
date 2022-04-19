@@ -11,5 +11,11 @@ class_intervals = ["{}-{}".format(bin[i],bin[i+1] - 1) for i in range(8)]
 hist = np.histogram(raw_data,bins=bin)
 print(hist[0])
 
+sum = 0
+for i in range(3,8):
+    sum += hist[0][i]
+
+print("The number of schools with greater than 50 plants are {}" .format(sum))
+
 write = pd.DataFrame({"Class intervals":class_intervals,"Frequency":hist[0]})
 write.to_excel('ExcelFiles/frequency_distribution.xlsx',index=False)
