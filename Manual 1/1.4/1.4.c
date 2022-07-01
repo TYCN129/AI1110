@@ -1,22 +1,27 @@
-#include<stdio.h>
-#include<math.h>
-
+#include "../coeffs.h"
 #define N pow(10,6)
 
-int main() {
-        FILE *pfile = fopen("../1.1/uni.dat","r");
-        double mean_u, mean_usq, var, rv;
+double var(char *str) {
+        int i=0,c;
+        FILE *fp;
+        double x, temp=0.0;
 
-        while(!feof(pfile)) {
-                fscanf(pfile,"%lf",&rv);
-                mean_u += (rv/N);
-                mean_usq += (rv*rv/N);
+        fp = fopen(str,"r");
+//get numbers from file
+        while(fscanf(fp,"%lf",&x)!=EOF)
+        {
+//Count numbers in file
+                i=i+1;
+//Add all numbers in file
+                temp = temp+(x*x);
         }
+        fclose(fp);
+        temp = temp/(i-1);
+        return temp - mean(str)*mean(str);
+}
 
-        var = mean_usq - mean_u*mean_u;
-        printf("%lf and %lf\n",mean_u,var);
-
-        fclose(pfile);
-
+int main() {
+        char str[] = "../1.1/uni.dat";
+        printf("Mean is %lf and variance is %lf.\n",mean(str),var(str));
 return 0;
 }
