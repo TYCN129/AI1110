@@ -1,26 +1,28 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
-N = 10**6
-pts = 100
+pts = 50
 
-X = np.loadtxt("../2.1/gau.dat",dtype='double')
+n = 10**6
+X = pd.read_csv("../2.1/gau.dat")
+
 x = np.linspace(-6,6,pts)
-
-cdf = []
-pdf = []
-
-def gauss_pdf(x):
-	return(1/np.sqrt(2*np.pi))*np.exp(-(x**2/2))
-
+F = [] 
 for i in range(0,pts):
-	cdf.append(np.size(np.nonzero(X < x[i]))/N)
+	Fcount = np.count_nonzero(X < x[i]) 
+	F.append(Fcount/n) 
 
+p = []
 for i in range(0,pts-1):
-	pdf.append((cdf[i+1] - cdf[i])/(x[i+1] - x[i]))
+	p.append( (F[i+1] - F[i])/ (x[i+1]-x[i]) )
+	
+	
 
-plt.plot(x,gauss_pdf(x))
-#plt.scatter(x[0:pts-1],pdf,label="Numerical")
+plt.plot(x.T[0:(pts-1)], p, color="blue" )#plotting the CDF
 plt.grid()
-plt.legend()
+plt.minorticks_on()
+plt.xlabel("x")
+plt.ylabel("$p_X(x)$")
+plt.title("Emperical PDF of X")
 plt.show()
