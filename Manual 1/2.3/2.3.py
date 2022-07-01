@@ -5,7 +5,7 @@ import pandas as pd
 pts = 60
 
 n = 10**6
-X = pd.read_csv("../2.1/gau.dat")
+X = np.loadtxt("../2.1/gau.dat")
 
 x = np.linspace(-6,6,pts)
 F = [] 
