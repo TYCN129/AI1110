@@ -17,8 +17,8 @@ fclose(fp);
 }
 
 int main() {
-        char str[] = "tri.dat";
-        triangular(str,N);
+	char str[] = "tri.dat";
+	triangular(str,N);
 
 return 0;
 }

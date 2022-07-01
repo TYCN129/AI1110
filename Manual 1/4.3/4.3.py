@@ -13,7 +13,7 @@ for i in range(0,pts):
 
 p=[]
 for i in range(0,pts-1):
-        p.append((F[i+1]-F[i])/(x[i+1]-x[i]))
+	p.append((F[i+1]-F[i])/(x[i+1]-x[i]))
 
 plt.plot(x[0:pts-1],p,label="PDF")
 plt.grid()
@@ -21,4 +21,3 @@ plt.xlabel("x")
 plt.ylabel("$p_T(x)$")
 plt.legend()
 plt.show()
-~         

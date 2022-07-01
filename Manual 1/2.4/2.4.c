@@ -1,22 +1,8 @@
-#include<stdio.h>
-#include<math.h>
+#include "../coeffs.h"
 
 #define N pow(10,6)
 
 int main() {
-	FILE *pfile = fopen("../2.1/gau.dat","r");
-	double mean_x, mean_xsq, var, rv;
-
-	while(!feof(pfile)) {
-		fscanf(pfile,"%lf",&rv);
-		mean_x += (rv/N);
-		mean_xsq += (rv*rv/N);
-	}
-	
-	var = mean_xsq - mean_x*mean_x;
-	printf("%lf and %lf\n",mean_x,var);
-
-	fclose(pfile);
-
+	printf("Mean is %lf and variance is %lf",mean("../2.1/gau.dat"),var("../2.1/gau.dat"));
 return 0;
 }

@@ -1,14 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 
-U = np.array(pd.read_csv("../1.1/uni.dat"))
-count,bins = np.histogram(U, bins = 10**6)
+N=10**6
+pts=60
+U = np.loadtxt("../1.1/uni.dat")
+x=np.linspace(-2,2,pts)
 
-pdf = count/sum(count)
-cdf = np.cumsum(pdf)
+F=[]
+for i in range(0,pts):
+	F.append(np.size(np.nonzero(U < x[i]))/N)
 
-plt.plot(bins[1:],cdf,label="CDF")
+plt.plot(x,F,label="CDF")
+plt.xlabel("x")
+plt.ylabel("$F_U(x)$")
 plt.legend()
 plt.grid()
 plt.show()
