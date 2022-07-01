@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-pts = 50
+pts = 60
 
 n = 10**6
 X = pd.read_csv("../2.1/gau.dat")
