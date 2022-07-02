@@ -25,6 +25,7 @@ for i in range(0,pts):
 plt.scatter(x.T, F, color="blue" )#plotting the CDF
 plt.plot(x.T, F_theory, color="orange" )#plotting the CDF
 plt.grid()
+plt.legend()
 plt.xlabel("x")
 plt.ylabel("$F_U(x)$")
 plt.show()
