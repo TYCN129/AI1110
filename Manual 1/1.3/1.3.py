@@ -19,7 +19,7 @@ def uniform_cdf(x):
 
 F_theory=[]
 
-vec_uniform = np.vectorize(uniform)
+vec_uniform = np.vectorize(uniform_cdf)
 
 for i in range(0,pts):
         F_n = np.count_nonzero(U < x[i]) #checking probability condition
