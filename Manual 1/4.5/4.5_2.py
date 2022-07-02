@@ -5,7 +5,7 @@ T=np.loadtxt("../4.1/tri.dat")
 x=np.linspace(-6,6,100)
 N=10**6
 
-def pdf(x):
+def cdf(x):
         if x <= 0:
                 return 0.0
         elif x > 0 and x <= 1:
