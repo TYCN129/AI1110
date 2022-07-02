@@ -9,16 +9,17 @@ N=10**6
 
 def Q(x):
     return (1 - mp.erf(x/np.sqrt(2)))/2
-  
-F_theory=[]
-for i in range(0,pts):
-        F_theory.append(1-Q(x[i]))
+ 
+def gauss(x):
+        return 1 - Q(x)
+
+vec_gauss=np.vectorize(gauss)
 
 F_sim=[]
 for i in range(0,pts):
         F_sim.append(np.size(np.nonzero(X < x[i]))/N)
 
-plt.plot(x.T,F_theory,label="Theoretical",color="orange")
+plt.plot(x.T,vec_gauss(x),label="Theoretical",color="orange")
 plt.scatter(x.T,F_sim,label="Numerical")
 plt.grid()
 plt.xlabel("x")
