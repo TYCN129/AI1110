@@ -9,7 +9,7 @@ U = pd.read_csv("../1.1/uni.dat")
 x = np.linspace(-2,2,pts)
 F = []
 
-def uniform(x):
+def uniform_cdf(x):
         if(x<0):
                 return 0
         elif(x>1):
