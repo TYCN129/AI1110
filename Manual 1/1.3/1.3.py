@@ -15,7 +15,7 @@ def uniform(x):
         elif(x>1):
                 return 1
         else:
-                return x
+                return x
 
 F_theory=[]
 
